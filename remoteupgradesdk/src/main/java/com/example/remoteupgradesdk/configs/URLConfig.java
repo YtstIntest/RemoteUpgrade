@@ -1,7 +1,7 @@
 package com.example.remoteupgradesdk.configs;
 
 public class URLConfig {
-    public static String IP = "https://113.57.170.58";
+    public static String IP = "http://113.57.170.58";
     public static String IP_PORT = IP + ":62063";
     public static String host = IP_PORT + "/api/fota/";
 
