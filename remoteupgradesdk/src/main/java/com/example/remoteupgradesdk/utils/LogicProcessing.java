@@ -21,8 +21,8 @@ public class LogicProcessing {
     private static final int DELAY_TIME = 5 * 1000;
     private String vin;
     private String uDate;
-    private String taskcarId="";
-    private String errorMsg="加载异常，请重试！！！";
+    private String taskcarId = "";
+    private String errorMsg = "加载异常，请重试！！！";
 
     private ResponseCallback<CurrentVehicleTaskResBean> currentVehicleTaskResBeanCallback;
     private ResponseCallback<UpdateConfirInterfaceResBean> updateConfirInterfaceResBeanCallback;
@@ -42,10 +42,27 @@ public class LogicProcessing {
                     OkHelper.queryCarUpdateTask(context, vin, uDate, taskcarId, new JsonCallback<DataBackResult<CurrentVehicleTaskResBean>>() {
                         @Override
                         public void onSuccess(Response<DataBackResult<CurrentVehicleTaskResBean>> response) {
-                            if(response.body().getBody().getResult()!=null){
-                                taskcarId=response.body().getBody().getResult().getTaskCarId();
+                            switch (response.body().getStatusCode()) {
+                                case OkHelper.SUCCESS:
+                                    if (response.body().getBody().getResult() != null) {
+                                        taskcarId = response.body().getBody().getResult().getTaskCarId();
+                                    }
+                                    currentVehicleTaskResBeanCallback.onSuccess(response.body().getBody());
+                                    break;
+                                case OkHelper.ERRO_NOT_FOUNT:
+                                    currentVehicleTaskResBeanCallback.onError(OkHelper.ERRO_NOT_FOUNT_MESSAGE);
+                                    break;
+                                case OkHelper.ERRO_SERVER:
+                                    currentVehicleTaskResBeanCallback.onError(OkHelper.ERRO_SERVER_MESSAGE);
+                                    break;
+                                case OkHelper.ERRO_UPTATE:
+                                    currentVehicleTaskResBeanCallback.onError(OkHelper.ERRO_UPTATE_MESSAGE);
+                                    break;
+                                default:
+                                    currentVehicleTaskResBeanCallback.onError(OkHelper.ERRO_NOT_MESSAGE);
+                                    break;
                             }
-                            currentVehicleTaskResBeanCallback.onSuccess(response.body().getBody());
+
                         }
 
                         @Override
@@ -103,7 +120,23 @@ public class LogicProcessing {
         OkHelper.confirmUpgrade(context, taskcarId, uDate, type, result, new JsonCallback<DataBackResult<UpdateConfirInterfaceResBean>>() {
             @Override
             public void onSuccess(Response<DataBackResult<UpdateConfirInterfaceResBean>> response) {
-                updateConfirInterfaceResBeanCallback.onSuccess(response.body().getBody());
+                switch (response.body().getStatusCode()) {
+                    case OkHelper.SUCCESS:
+                        updateConfirInterfaceResBeanCallback.onSuccess(response.body().getBody());
+                        break;
+                    case OkHelper.ERRO_NOT_FOUNT:
+                        updateConfirInterfaceResBeanCallback.onError(OkHelper.ERRO_NOT_FOUNT_MESSAGE);
+                        break;
+                    case OkHelper.ERRO_SERVER:
+                        updateConfirInterfaceResBeanCallback.onError(OkHelper.ERRO_SERVER_MESSAGE);
+                        break;
+                    case OkHelper.ERRO_UPTATE:
+                        updateConfirInterfaceResBeanCallback.onError(OkHelper.ERRO_UPTATE_MESSAGE);
+                        break;
+                    default:
+                        updateConfirInterfaceResBeanCallback.onError(OkHelper.ERRO_NOT_MESSAGE);
+                        break;
+                }
             }
 
             @Override
@@ -128,7 +161,24 @@ public class LogicProcessing {
         OkHelper.getUpdateTaskList(context, vin, pi, ps, uDate, new JsonCallback<DataBackResult<UpdateVehicleTasksResBean>>() {
             @Override
             public void onSuccess(Response<DataBackResult<UpdateVehicleTasksResBean>> response) {
-                updateVehicleTasksResBeanCallback.onSuccess(response.body().getBody());
+                switch (response.body().getStatusCode()) {
+                    case OkHelper.SUCCESS:
+                        updateVehicleTasksResBeanCallback.onSuccess(response.body().getBody());
+
+                        break;
+                    case OkHelper.ERRO_NOT_FOUNT:
+                        updateVehicleTasksResBeanCallback.onError(OkHelper.ERRO_NOT_FOUNT_MESSAGE);
+                        break;
+                    case OkHelper.ERRO_SERVER:
+                        updateVehicleTasksResBeanCallback.onError(OkHelper.ERRO_SERVER_MESSAGE);
+                        break;
+                    case OkHelper.ERRO_UPTATE:
+                        updateVehicleTasksResBeanCallback.onError(OkHelper.ERRO_UPTATE_MESSAGE);
+                        break;
+                    default:
+                        updateVehicleTasksResBeanCallback.onError(OkHelper.ERRO_NOT_MESSAGE);
+                        break;
+                }
             }
 
             @Override

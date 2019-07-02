@@ -12,7 +12,18 @@ import com.lzy.okgo.cache.CacheMode;
 import java.util.Observable;
 
 public class OkHelper extends Observable {
-    public static int SUCCESS = 200;
+    public static final int SUCCESS = 200;
+    public static final int ERRO_NOT_FOUNT = 404;
+    public static String ERRO_NOT_FOUNT_MESSAGE = "未找到请求路由，多用于下载文件时，文件不存在或文件不能被下载";
+
+    public static final int ERRO_SERVER = 500;
+    public static String ERRO_SERVER_MESSAGE = "服务端错误";
+
+    public static final int ERRO_UPTATE = 206;
+    public static String ERRO_UPTATE_MESSAGE = "下载部分文件时，成功响应";
+
+    public static String ERRO_NOT_MESSAGE = "未知错误";
+
 
 
     /**
