@@ -61,6 +61,7 @@ public class UpdateVehicleTasksResBean {
         private String taskCarId;
         private int status;
         private String description;
+        private String upgradeDate;
 
         public int getIndex() {
             return index;
@@ -92,6 +93,14 @@ public class UpdateVehicleTasksResBean {
 
         public void setDescription(String description) {
             this.description = description;
+        }
+
+        public String getUpgradeDate() {
+            return upgradeDate;
+        }
+
+        public void setUpgradeDate(String upgradeDate) {
+            this.upgradeDate = upgradeDate;
         }
     }
 }
