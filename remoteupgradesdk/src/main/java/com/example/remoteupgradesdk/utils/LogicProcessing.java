@@ -41,6 +41,14 @@ public class LogicProcessing {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case 0x123:
+                    if (isNewTask == 0) {
+                        taskcarId = "";
+                    } else {
+                        if (status == 11) {
+                            taskcarId = "";
+                        }
+
+                    }
                     OkHelper.queryCarUpdateTask(context, vin, uDate, taskcarId, new JsonCallback<DataBackResult<CurrentVehicleTaskResBean>>() {
                         @Override
                         public void onSuccess(Response<DataBackResult<CurrentVehicleTaskResBean>> response) {
@@ -76,14 +84,7 @@ public class LogicProcessing {
                         }
                     });
 
-                    if (isNewTask == 0) {
-                        taskcarId = "";
-                    } else {
-                        if (status == 11) {
-                            taskcarId = "";
-                        }
 
-                    }
 
                     break;
             }
