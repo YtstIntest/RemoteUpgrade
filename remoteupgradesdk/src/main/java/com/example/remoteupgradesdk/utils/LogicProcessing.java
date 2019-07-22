@@ -22,6 +22,8 @@ public class LogicProcessing {
     private String vin;
     private String uDate;
     private String taskcarId = "";
+    private int isNewTask = 0;  //判断当前任务是否为最新任务
+    private int status = -1;     //当前车机任务状态
     private String errorMsg = "加载异常，请重试！！！";
 
     private ResponseCallback<CurrentVehicleTaskResBean> currentVehicleTaskResBeanCallback;
@@ -44,8 +46,10 @@ public class LogicProcessing {
                         public void onSuccess(Response<DataBackResult<CurrentVehicleTaskResBean>> response) {
                             switch (response.body().getStatusCode()) {
                                 case OkHelper.SUCCESS:
-                                    if (response.body().getBody().getResult() != null) {
+                                    if (response.body().getBody().getResult().getTaskCarId() != null) {
                                         taskcarId = response.body().getBody().getResult().getTaskCarId();
+                                        isNewTask = response.body().getBody().getResult().getIsNewTask();
+                                        status = response.body().getBody().getResult().getStatus();
                                     }
                                     currentVehicleTaskResBeanCallback.onSuccess(response.body().getBody());
                                     break;
@@ -71,6 +75,15 @@ public class LogicProcessing {
                             currentVehicleTaskResBeanCallback.onError(errorMsg);
                         }
                     });
+
+                    if (isNewTask == 0) {
+                        taskcarId = "";
+                    } else {
+                        if (status == 11) {
+                            taskcarId = "";
+                        }
+
+                    }
 
                     break;
             }
