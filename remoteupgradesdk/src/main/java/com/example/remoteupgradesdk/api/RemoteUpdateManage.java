@@ -5,6 +5,8 @@ import android.content.Context;
 import com.example.remoteupgradesdk.bean.CurrentVehicleTaskResBean;
 import com.example.remoteupgradesdk.bean.UpdateConfirInterfaceResBean;
 import com.example.remoteupgradesdk.bean.UpdateVehicleTasksResBean;
+import com.example.remoteupgradesdk.configs.Config;
+import com.example.remoteupgradesdk.configs.URLConfig;
 import com.example.remoteupgradesdk.interfaces.ResponseCallback;
 import com.example.remoteupgradesdk.utils.LogicProcessing;
 
@@ -12,7 +14,8 @@ import com.example.remoteupgradesdk.utils.LogicProcessing;
 public class RemoteUpdateManage {
     private LogicProcessing logicProcessing;
 
-    public RemoteUpdateManage(Context context) {
+    public RemoteUpdateManage(Context context, Config config) {
+        URLConfig.configEnvironment(config);
         logicProcessing = new LogicProcessing(context);
     }
 

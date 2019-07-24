@@ -2,8 +2,38 @@ package com.example.remoteupgradesdk.configs;
 
 public class URLConfig {
     public static String IP = "http://113.57.170.58";
-    public static String IP_PORT = IP + ":62063";
+
+
+    public static String PORT_DEVELOP = ":62063";//开发环境
+
+    public static String PORT_LASGING= ":62067";//联调环境
+
+
+
+
+
+
+
+    public static String PORT= ":62067";//默认环境
+
+
+    public static String IP_PORT = IP + PORT;
+
     public static String host = IP_PORT + "/api/fota/";
+
+
+    public static void configEnvironment(Config config) {
+        switch (config) {
+            case DEVELOPMENT:
+                PORT = URLConfig.PORT_DEVELOP;
+                break;
+            case JOINT_TUNE:
+                PORT = URLConfig.PORT_LASGING;
+                break;
+        }
+
+
+    }
 
 
     /**
