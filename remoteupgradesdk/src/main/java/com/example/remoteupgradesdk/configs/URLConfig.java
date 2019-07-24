@@ -22,18 +22,6 @@ public class URLConfig {
     public static String host = IP_PORT + "/api/fota/";
 
 
-    public static void configEnvironment(Config config) {
-        switch (config) {
-            case DEVELOPMENT:
-                PORT = URLConfig.PORT_DEVELOP;
-                break;
-            case JOINT_TUNE:
-                PORT = URLConfig.PORT_LASGING;
-                break;
-        }
-
-
-    }
 
 
     /**
