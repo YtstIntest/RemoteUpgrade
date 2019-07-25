@@ -15,11 +15,9 @@ public class RemoteUpdateManage {
     private LogicProcessing logicProcessing;
 
     public RemoteUpdateManage(Context context,Config config) {
-        URLConfig.configEnvironment(config);
+        URLConfig.config=config;
         logicProcessing = new LogicProcessing(context);
     }
-
-
 
 
 

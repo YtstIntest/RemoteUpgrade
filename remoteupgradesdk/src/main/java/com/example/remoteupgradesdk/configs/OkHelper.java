@@ -33,7 +33,7 @@ public class OkHelper extends Observable {
      * @create_time 2019/4/27
      */
     public static void queryCarUpdateTask(Context context, String vin, String uDate, String taskcarId, JsonCallback<DataBackResult<CurrentVehicleTaskResBean>> callback) {
-        OkGo.<DataBackResult<CurrentVehicleTaskResBean>>get(URLConfig.queryCarUpdateTask)
+        OkGo.<DataBackResult<CurrentVehicleTaskResBean>>get(URLConfig.queryCarUpdateTask())
                 .tag(context)
                 .cacheMode(CacheMode.NO_CACHE)
                 .params("vin", vin)
@@ -53,7 +53,7 @@ public class OkHelper extends Observable {
      * @create_time 2019/4/27
      */
     public static void confirmUpgrade(Context context, String taskcarId, String uDate, int type, int result, JsonCallback<DataBackResult<UpdateConfirInterfaceResBean>> callback) {
-        OkGo.<DataBackResult<UpdateConfirInterfaceResBean>>get(URLConfig.confirmUpgrade)
+        OkGo.<DataBackResult<UpdateConfirInterfaceResBean>>get(URLConfig.confirmUpgrade())
                 .tag(context)
                 .cacheMode(CacheMode.NO_CACHE)
                 .params("taskCarId", taskcarId)
@@ -73,7 +73,7 @@ public class OkHelper extends Observable {
      * @create_time 2019/4/27
      */
     public static void getUpdateTaskList(Context context, String vin, int pi, int ps, String uDate, JsonCallback<DataBackResult<UpdateVehicleTasksResBean>> callback) {
-        OkGo.<DataBackResult<UpdateVehicleTasksResBean>>get(URLConfig.getUpdateTaskList)
+        OkGo.<DataBackResult<UpdateVehicleTasksResBean>>get(URLConfig.getUpdateTaskList())
                 .tag(context)
                 .cacheMode(CacheMode.NO_CACHE)
                 .params("vin", vin)
