@@ -14,9 +14,13 @@ import com.example.remoteupgradesdk.utils.LogicProcessing;
 public class RemoteUpdateManage {
     private LogicProcessing logicProcessing;
 
-    public RemoteUpdateManage(Context context,Config config) {
-        URLConfig.config=config;
+    public RemoteUpdateManage(Context context) {
+
         logicProcessing = new LogicProcessing(context);
+    }
+
+    public void configEnvironment(Config config){
+        URLConfig.config=config;
     }
 
 
