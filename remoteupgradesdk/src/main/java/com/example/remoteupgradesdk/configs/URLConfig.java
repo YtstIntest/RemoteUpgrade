@@ -11,13 +11,7 @@ public class URLConfig {
 
 
 
-
-
-
-    public static String PORT= ":62067";//默认环境
-
-
-    public static String IP_PORT = IP + PORT;
+    public static String IP_PORT = IP + PORT_LASGING;
 
     public static String host = IP_PORT + "/api/fota/";
 

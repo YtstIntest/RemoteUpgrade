@@ -28,10 +28,10 @@ public class RemoteUpdateManage {
     public void configEnvironment(Config config) {
         switch (config) {
             case DEVELOPMENT:
-                URLConfig.PORT = URLConfig.PORT_DEVELOP;
+                URLConfig.IP_PORT = URLConfig.IP + URLConfig.PORT_DEVELOP;
                 break;
             case JOINT_TUNE:
-                URLConfig.PORT = URLConfig.PORT_LASGING;
+                URLConfig.IP_PORT = URLConfig.IP + URLConfig.PORT_LASGING;
                 break;
         }
 
