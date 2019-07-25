@@ -14,29 +14,13 @@ import com.example.remoteupgradesdk.utils.LogicProcessing;
 public class RemoteUpdateManage {
     private LogicProcessing logicProcessing;
 
-    public RemoteUpdateManage(Context context) {
+    public RemoteUpdateManage(Context context,Config config) {
+        URLConfig.configEnvironment(config);
         logicProcessing = new LogicProcessing(context);
     }
 
 
-    /**
-     * @param config 环境枚举
-     * @desc 设置环境
-     * @author XL
-     * @create_time 2019/5/16
-     */
-    public void configEnvironment(Config config) {
-        switch (config) {
-            case DEVELOPMENT:
-                URLConfig.IP_PORT = URLConfig.IP + URLConfig.PORT_DEVELOP;
-                break;
-            case JOINT_TUNE:
-                URLConfig.IP_PORT = URLConfig.IP + URLConfig.PORT_LASGING;
-                break;
-        }
 
-
-    }
 
 
     /**

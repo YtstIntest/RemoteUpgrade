@@ -16,6 +16,22 @@ public class URLConfig {
     public static String host = IP_PORT + "/api/fota/";
 
 
+    /**
+     * @param config 环境枚举
+     * @desc 设置环境
+     * @author XL
+     * @create_time 2019/5/16
+     */
+    public static void configEnvironment(Config config) {
+        switch (config) {
+            case DEVELOPMENT:
+                IP_PORT = IP + PORT_DEVELOP;
+                break;
+            case JOINT_TUNE:
+               IP_PORT = IP + PORT_LASGING;
+                break;
+        }
+    }
 
 
     /**
