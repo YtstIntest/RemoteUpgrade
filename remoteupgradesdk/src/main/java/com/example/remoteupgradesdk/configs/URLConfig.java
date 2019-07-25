@@ -25,10 +25,10 @@ public class URLConfig {
     public static void configEnvironment(Config config) {
         switch (config) {
             case DEVELOPMENT:
-                IP_PORT = IP + PORT_DEVELOP;
+                host = IP + PORT_DEVELOP+ "/api/fota/";
                 break;
             case JOINT_TUNE:
-               IP_PORT = IP + PORT_LASGING;
+                host = IP + PORT_LASGING+ "/api/fota/";
                 break;
         }
     }
