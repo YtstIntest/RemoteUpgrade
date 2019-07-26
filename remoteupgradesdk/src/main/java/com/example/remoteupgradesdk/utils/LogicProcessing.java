@@ -54,10 +54,12 @@ public class LogicProcessing {
                         public void onSuccess(Response<DataBackResult<CurrentVehicleTaskResBean>> response) {
                             switch (response.body().getStatusCode()) {
                                 case OkHelper.SUCCESS:
-                                    if (response.body().getBody().getResult().getTaskCarId() != null) {
-                                        taskcarId = response.body().getBody().getResult().getTaskCarId();
-                                        isNewTask = response.body().getBody().getResult().getIsNewTask();
-                                        status = response.body().getBody().getResult().getStatus();
+                                    if(response.body().getBody().getResult()!=null){
+                                        if (response.body().getBody().getResult().getTaskCarId() != null) {
+                                            taskcarId = response.body().getBody().getResult().getTaskCarId();
+                                            isNewTask = response.body().getBody().getResult().getIsNewTask();
+                                            status = response.body().getBody().getResult().getStatus();
+                                        }
                                     }
                                     currentVehicleTaskResBeanCallback.onSuccess(response.body().getBody());
                                     break;
