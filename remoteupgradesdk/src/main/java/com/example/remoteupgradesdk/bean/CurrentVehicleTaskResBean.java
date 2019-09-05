@@ -60,6 +60,7 @@ public class CurrentVehicleTaskResBean {
          * progress : 255
          * result : -1
          * isNewTask : 1
+         * time: "2019-09-04T15:25:39.1259343+08:00"
          */
 
         private String taskCarId;
@@ -73,6 +74,7 @@ public class CurrentVehicleTaskResBean {
         private int progress;
         private int result;
         private int isNewTask;
+        private String time;
 
         public String getTaskCarId() {
             return taskCarId;
@@ -160,6 +162,14 @@ public class CurrentVehicleTaskResBean {
 
         public void setIsNewTask(int isNewTask) {
             this.isNewTask = isNewTask;
+        }
+
+        public String getTime() {
+            return time;
+        }
+
+        public void setTime(String time) {
+            this.time = time;
         }
     }
 }

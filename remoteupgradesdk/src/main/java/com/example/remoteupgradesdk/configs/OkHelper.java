@@ -23,6 +23,7 @@ public class OkHelper extends Observable {
     public static String ERRO_UPTATE_MESSAGE = "下载部分文件时，成功响应";
 
     public static String ERRO_NOT_MESSAGE = "未知错误";
+    public static String ERRO_MESSAGE = "加载异常，请重试！！！";
 
 
 
