@@ -31,8 +31,6 @@ public class RemoteUpdateManage {
     private int isTask = 0;
 
     private ResponseCallback<CurrentVehicleTaskResBean> currentVehicleTaskResBeanCallback;
-    private ResponseCallback<UpdateConfirInterfaceResBean> updateConfirInterfaceResBeanCallback;
-    private ResponseCallback<UpdateVehicleTasksResBean> updateVehicleTasksResBeanCallback;
 
 
     private Handler handler = new Handler() {
@@ -151,26 +149,26 @@ public class RemoteUpdateManage {
      * @author XL
      * @create_time 2019/4/13
      */
-    public void getUpdateTaskList(String vin, int pi, int ps, String uDate) {
+    public void getUpdateTaskList(String vin, int pi, int ps, String uDate, final ResponseCallback<UpdateVehicleTasksResBean> callback) {
         OkHelper.getUpdateTaskList(context, vin, pi, ps, uDate, new JsonCallback<DataBackResult<UpdateVehicleTasksResBean>>() {
             @Override
             public void onSuccess(Response<DataBackResult<UpdateVehicleTasksResBean>> response) {
                 switch (response.body().getStatusCode()) {
                     case OkHelper.SUCCESS:
-                        updateVehicleTasksResBeanCallback.onSuccess(response.body().getBody());
+                        callback.onSuccess(response.body().getBody());
 
                         break;
                     case OkHelper.ERRO_NOT_FOUNT:
-                        updateVehicleTasksResBeanCallback.onError(OkHelper.ERRO_NOT_FOUNT_MESSAGE);
+                        callback.onError(OkHelper.ERRO_NOT_FOUNT_MESSAGE);
                         break;
                     case OkHelper.ERRO_SERVER:
-                        updateVehicleTasksResBeanCallback.onError(OkHelper.ERRO_SERVER_MESSAGE);
+                        callback.onError(OkHelper.ERRO_SERVER_MESSAGE);
                         break;
                     case OkHelper.ERRO_UPTATE:
-                        updateVehicleTasksResBeanCallback.onError(OkHelper.ERRO_UPTATE_MESSAGE);
+                        callback.onError(OkHelper.ERRO_UPTATE_MESSAGE);
                         break;
                     default:
-                        updateVehicleTasksResBeanCallback.onError(OkHelper.ERRO_NOT_MESSAGE);
+                        callback.onError(OkHelper.ERRO_NOT_MESSAGE);
                         break;
                 }
             }
@@ -178,18 +176,9 @@ public class RemoteUpdateManage {
             @Override
             public void onError(Response<DataBackResult<UpdateVehicleTasksResBean>> response) {
                 super.onError(response);
-                updateVehicleTasksResBeanCallback.onError(OkHelper.ERRO_MESSAGE);
+                callback.onError(OkHelper.ERRO_MESSAGE);
             }
         });
-    }
-
-    /**
-     * @desc 获取历史升级记录回调接口
-     * @author XL
-     * @create_time 2019/5/16
-     */
-    public void setUpdateVehicleTasksCallback(ResponseCallback<UpdateVehicleTasksResBean> callback) {
-        this.updateVehicleTasksResBeanCallback = callback;
     }
 
 
@@ -199,9 +188,10 @@ public class RemoteUpdateManage {
      * @author XL
      * @create_time 2019/4/13
      */
-    public void queryCarUpdateTask(String vin, String uDate) {
+    public void queryCarUpdateTask(String vin, String uDate,ResponseCallback<CurrentVehicleTaskResBean> callback) {
         this.vin = vin;
         this.uDate = uDate;
+        this.currentVehicleTaskResBeanCallback = callback;
         if (isTask == 0) {
             vehicleTask = new MTimerTask(DELAY_TIME, new TimerTask() {
                 @Override
@@ -215,17 +205,6 @@ public class RemoteUpdateManage {
     }
 
     /**
-     * @desc 查询车辆升级任务信息回调接口
-     * @author XL
-     * @create_time 2019/5/16
-     */
-    public void setCurrentVehicleTaskCallback(ResponseCallback<CurrentVehicleTaskResBean> callback) {
-        this.currentVehicleTaskResBeanCallback = callback;
-
-    }
-
-
-    /**
      * @param taskcarId 车辆任务id
      * @param uDate     操作时间
      * @param type      确认类型
@@ -234,25 +213,25 @@ public class RemoteUpdateManage {
      * @author XL
      * @create_time 2019/4/27
      */
-    public void confirmUpgrade(String taskcarId, String uDate, int type, int result) {
+    public void confirmUpgrade(String taskcarId, String uDate, int type, int result, final ResponseCallback<UpdateConfirInterfaceResBean> callback) {
         OkHelper.confirmUpgrade(context, taskcarId, uDate, type, result, new JsonCallback<DataBackResult<UpdateConfirInterfaceResBean>>() {
             @Override
             public void onSuccess(Response<DataBackResult<UpdateConfirInterfaceResBean>> response) {
                 switch (response.body().getStatusCode()) {
                     case OkHelper.SUCCESS:
-                        updateConfirInterfaceResBeanCallback.onSuccess(response.body().getBody());
+                        callback.onSuccess(response.body().getBody());
                         break;
                     case OkHelper.ERRO_NOT_FOUNT:
-                        updateConfirInterfaceResBeanCallback.onError(OkHelper.ERRO_NOT_FOUNT_MESSAGE);
+                        callback.onError(OkHelper.ERRO_NOT_FOUNT_MESSAGE);
                         break;
                     case OkHelper.ERRO_SERVER:
-                        updateConfirInterfaceResBeanCallback.onError(OkHelper.ERRO_SERVER_MESSAGE);
+                        callback.onError(OkHelper.ERRO_SERVER_MESSAGE);
                         break;
                     case OkHelper.ERRO_UPTATE:
-                        updateConfirInterfaceResBeanCallback.onError(OkHelper.ERRO_UPTATE_MESSAGE);
+                        callback.onError(OkHelper.ERRO_UPTATE_MESSAGE);
                         break;
                     default:
-                        updateConfirInterfaceResBeanCallback.onError(OkHelper.ERRO_NOT_MESSAGE);
+                        callback.onError(OkHelper.ERRO_NOT_MESSAGE);
                         break;
                 }
             }
@@ -260,19 +239,11 @@ public class RemoteUpdateManage {
             @Override
             public void onError(Response<DataBackResult<UpdateConfirInterfaceResBean>> response) {
                 super.onError(response);
-                updateConfirInterfaceResBeanCallback.onError(OkHelper.ERRO_MESSAGE);
+                callback.onError(OkHelper.ERRO_MESSAGE);
             }
         });
     }
 
-    /**
-     * @desc 确认升级任务回调接口
-     * @author XL
-     * @create_time 2019/5/16
-     */
-    public void setUpdateConfirInterfaceCallback(ResponseCallback<UpdateConfirInterfaceResBean> callback) {
-        this.updateConfirInterfaceResBeanCallback = callback;
-    }
 
 
     /**
