@@ -27,7 +27,8 @@ public class RemoteUpdateManage {
     private String taskcarId = "";
     private int isNewTask = 0;  //判断当前任务是否为最新任务
     private int status = -1;     //当前车机任务状态
-
+    private MTimerTask vehicleTask;
+    private int isTask = 0;
 
     private ResponseCallback<CurrentVehicleTaskResBean> currentVehicleTaskResBeanCallback;
     private ResponseCallback<UpdateConfirInterfaceResBean> updateConfirInterfaceResBeanCallback;
@@ -191,13 +192,6 @@ public class RemoteUpdateManage {
         this.updateVehicleTasksResBeanCallback = callback;
     }
 
-    private MTimerTask vehicleTask = new MTimerTask(DELAY_TIME, new TimerTask() {
-        @Override
-        public void run() {
-            handler.sendEmptyMessage(0x123);
-        }
-    });
-    ;
 
     /**
      * @param vin 车辆VIN
@@ -208,7 +202,17 @@ public class RemoteUpdateManage {
     public void queryCarUpdateTask(String vin, String uDate) {
         this.vin = vin;
         this.uDate = uDate;
-        vehicleTask.start();
+        vehicleTask = new MTimerTask(DELAY_TIME, new TimerTask() {
+            @Override
+            public void run() {
+                handler.sendEmptyMessage(0x123);
+            }
+        });
+
+        if (isTask == 0) {
+            vehicleTask.start();
+            isTask = 1;
+        }
     }
 
     /**
@@ -279,6 +283,7 @@ public class RemoteUpdateManage {
      */
     public void clearTask() {
         vehicleTask.stop();
+        isTask = 0;
     }
 
 
