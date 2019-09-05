@@ -202,14 +202,13 @@ public class RemoteUpdateManage {
     public void queryCarUpdateTask(String vin, String uDate) {
         this.vin = vin;
         this.uDate = uDate;
-        vehicleTask = new MTimerTask(DELAY_TIME, new TimerTask() {
-            @Override
-            public void run() {
-                handler.sendEmptyMessage(0x123);
-            }
-        });
-
         if (isTask == 0) {
+            vehicleTask = new MTimerTask(DELAY_TIME, new TimerTask() {
+                @Override
+                public void run() {
+                    handler.sendEmptyMessage(0x123);
+                }
+            });
             vehicleTask.start();
             isTask = 1;
         }
