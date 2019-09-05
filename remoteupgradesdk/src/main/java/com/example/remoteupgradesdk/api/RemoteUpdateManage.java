@@ -281,8 +281,10 @@ public class RemoteUpdateManage {
      * @create_time 2019/4/17
      */
     public void clearTask() {
-        vehicleTask.stop();
-        isTask = 0;
+        if(isTask==1){
+            vehicleTask.stop();
+            isTask = 0;
+        }
     }
 
 
