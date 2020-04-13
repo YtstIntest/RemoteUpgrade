@@ -1,7 +1,7 @@
 package com.example.remoteupgradesdk.configs;
 
 public class URLConfig {
-    public static String IP = "http://113.57.170.58";
+    public static String IP = "http://113.57.170.58";//联调服务器
 
 
     public static String PORT_DEVELOP = ":62063/api/fota/";//开发环境
