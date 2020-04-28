@@ -8,7 +8,6 @@ import com.example.remoteupgradesdk.bean.CurrentVehicleTaskResBean;
 import com.example.remoteupgradesdk.bean.UpdateConfirInterfaceResBean;
 import com.example.remoteupgradesdk.bean.UpdateVehicleTasksResBean;
 import com.example.remoteupgradesdk.callback.JsonCallback;
-import com.example.remoteupgradesdk.configs.Config;
 import com.example.remoteupgradesdk.configs.DataBackResult;
 import com.example.remoteupgradesdk.configs.OkHelper;
 import com.example.remoteupgradesdk.configs.URLConfig;
@@ -94,11 +93,6 @@ public class RemoteUpdateManage {
 
         this.context = context;
     }
-
-    public void configEnvironment(Config config) {
-        URLConfig.config = config;
-    }
-
 
     /**
      * @param vin   车辆VIN

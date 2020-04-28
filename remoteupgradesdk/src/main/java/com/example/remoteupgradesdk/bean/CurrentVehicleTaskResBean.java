@@ -72,6 +72,7 @@ public class CurrentVehicleTaskResBean {
         private int duration;
         private int status;
         private int progress;
+        private int resultCode;
         private int result;
         private int isNewTask;
         private String time;
@@ -170,6 +171,15 @@ public class CurrentVehicleTaskResBean {
 
         public void setTime(String time) {
             this.time = time;
+        }
+
+
+        public int getResultCode() {
+            return resultCode;
+        }
+
+        public void setResultCode(int resultCode) {
+            this.resultCode = resultCode;
         }
     }
 }

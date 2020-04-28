@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="Gradle: com.android.support:support-compat-28.0.0">
+  <library name="Gradle: com.android.support:support-compat:28.0.0@aar">
     <ANNOTATIONS>
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/200c007aed012d0cf017d40cedd500c1/annotations.zip!/" />
     </ANNOTATIONS>

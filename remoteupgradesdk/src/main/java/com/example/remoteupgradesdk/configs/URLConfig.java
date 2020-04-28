@@ -1,30 +1,13 @@
 package com.example.remoteupgradesdk.configs;
 
 public class URLConfig {
-    public static String IP = "http://113.57.170.58";//联调服务器
+    public static String IP = "http://nats.intestcar.com";//联调服务器
 
 
-    public static String PORT_DEVELOP = ":62063/api/fota/";//开发环境
+    public static String PORT = ":62078/api/fota/";//开发环境
 
-    public static String PORT_LASGING = ":62067/api/fota/";//联调环境
+    public static String IP_PORT = IP + PORT;
 
-
-    public static Config config = Config.JOINT_TUNE;//默认环境
-
-    /**
-     * @desc 设置环境
-     * @author XL
-     * @create_time 2019/5/16
-     */
-    public static String configEnvironment() {
-        switch (config) {
-            case DEVELOPMENT:
-                return IP + PORT_DEVELOP;
-            case JOINT_TUNE:
-                return IP + PORT_LASGING;
-        }
-        return IP + PORT_LASGING;
-    }
 
     /**
      * @desc 查询车辆升级任务信息
@@ -32,7 +15,7 @@ public class URLConfig {
      * @create_time 2019/4/27
      */
     public static String queryCarUpdateTask() {
-        return configEnvironment() + "s1";
+        return IP_PORT + "s1";
     }
 
     /**
@@ -41,7 +24,7 @@ public class URLConfig {
      * @create_time 2019/4/27
      */
     public static String confirmUpgrade() {
-        return configEnvironment() + "s2";
+        return IP_PORT + "s2";
     }
 
     /**
@@ -50,7 +33,7 @@ public class URLConfig {
      * @create_time 2019/4/27
      */
     public static String getUpdateTaskList() {
-        return configEnvironment() + "s3";
+        return IP_PORT + "s3";
     }
 
 }
