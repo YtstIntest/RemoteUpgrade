@@ -4,7 +4,7 @@ public class CurrentVehicleTaskResBean {
 
 
     /**
-     * result : {"taskCarId":"05d2bf95-a152-4dde-8f9e-a514b39bc88a","taskType":0,"cVer":"","nVer":"","size":0,"description":null,"duration":0,"status":1,"progress":255,"result":-1,"isNewTask":1}
+     * result : {"taskCarId":"39dbb5e7-1efe-44d5-8128-500ee6a575e0","taskType":1,"cVer":"1231231211","nVer":"555554444422223111111111","size":1.062,"description":"\n\ntesttesttesttesttesttest\ntesttesttesttesttesttest\ntesttesttesttesttesttest\n testtesttesttesttesttest\n        testtesttesttesttesttest\n\ntesttesttesttesttesttest\n           testtesttesttesttesttest","duration":10,"progress":0,"status":10,"result":-1,"resultCode":5354,"isNewTask":1,"time":"2020年6月17日 17:23"}
      * total : 1
      * code : 1
      * msg : null
@@ -49,31 +49,41 @@ public class CurrentVehicleTaskResBean {
 
     public static class ResultBean {
         /**
-         * taskCarId : 05d2bf95-a152-4dde-8f9e-a514b39bc88a
-         * taskType : 0
-         * cVer :
-         * nVer :
-         * size : 0
-         * description : null
-         * duration : 0
-         * status : 1
-         * progress : 255
+         * taskCarId : 39dbb5e7-1efe-44d5-8128-500ee6a575e0
+         * taskType : 1
+         * cVer : 1231231211
+         * nVer : 555554444422223111111111
+         * size : 1.062
+         * description :
+
+         testtesttesttesttesttest
+         testtesttesttesttesttest
+         testtesttesttesttesttest
+         testtesttesttesttesttest
+         testtesttesttesttesttest
+
+         testtesttesttesttesttest
+         testtesttesttesttesttest
+         * duration : 10
+         * progress : 0
+         * status : 10
          * result : -1
+         * resultCode : 5354
          * isNewTask : 1
-         * time: "2019-09-04T15:25:39.1259343+08:00"
+         * time : 2020年6月17日 17:23
          */
 
         private String taskCarId;
         private int taskType;
         private String cVer;
         private String nVer;
-        private int size;
+        private double size;
         private String description;
         private int duration;
-        private int status;
         private int progress;
-        private int resultCode;
+        private int status;
         private int result;
+        private int resultCode;
         private int isNewTask;
         private String time;
 
@@ -109,11 +119,11 @@ public class CurrentVehicleTaskResBean {
             this.nVer = nVer;
         }
 
-        public int getSize() {
+        public double getSize() {
             return size;
         }
 
-        public void setSize(int size) {
+        public void setSize(double size) {
             this.size = size;
         }
 
@@ -133,14 +143,6 @@ public class CurrentVehicleTaskResBean {
             this.duration = duration;
         }
 
-        public int getStatus() {
-            return status;
-        }
-
-        public void setStatus(int status) {
-            this.status = status;
-        }
-
         public int getProgress() {
             return progress;
         }
@@ -149,12 +151,28 @@ public class CurrentVehicleTaskResBean {
             this.progress = progress;
         }
 
+        public int getStatus() {
+            return status;
+        }
+
+        public void setStatus(int status) {
+            this.status = status;
+        }
+
         public int getResult() {
             return result;
         }
 
         public void setResult(int result) {
             this.result = result;
+        }
+
+        public int getResultCode() {
+            return resultCode;
+        }
+
+        public void setResultCode(int resultCode) {
+            this.resultCode = resultCode;
         }
 
         public int getIsNewTask() {
@@ -171,15 +189,6 @@ public class CurrentVehicleTaskResBean {
 
         public void setTime(String time) {
             this.time = time;
-        }
-
-
-        public int getResultCode() {
-            return resultCode;
-        }
-
-        public void setResultCode(int resultCode) {
-            this.resultCode = resultCode;
         }
     }
 }
